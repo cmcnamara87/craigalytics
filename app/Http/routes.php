@@ -27,6 +27,15 @@ Route::group(["prefix" => 'api'], function() {
         $device = \App\Devices::create([
             "name" => $faker->name
         ]);
+
+        // Also create an event for registration
+        $event = [
+            'name' => 'DEVICE_ADDED',
+            'device_id' => $device->id,
+            'metadata' => []
+        ];
+        \App\Events::create($event);
+
         return response()->json($device, 201);
     });
 

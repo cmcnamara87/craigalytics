@@ -2,8 +2,6 @@
 
 date_default_timezone_set('Australia/Brisbane');
 
-header('Access-Control-Allow-Origin: *');
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -21,7 +19,7 @@ Route::get('/', function () {
     return view('welcome', compact('events'));
 });
 
-Route::group(["prefix" => 'api'], function() {
+Route::group(["prefix" => 'api', 'middleware' => 'cors'], function() {
     Route::post('devices', function() {
         $faker = Faker\Factory::create();
         $device = \App\Devices::create([

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Events extends Model
 {
-    protected $fillable = ['device_id', 'data', 'name'];
+    protected $fillable = ['device_id', 'metadata', 'name'];
 
     public function device()
     {

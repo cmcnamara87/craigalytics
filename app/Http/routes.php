@@ -12,24 +12,6 @@
 */
 
 Route::get('/', function () {
-
-
-    $faker = Faker\Factory::create();
-    $device = \App\Devices::create([
-        "name" => $faker->name
-    ]);
-
-    $event = \App\Events::create([
-        'name' => 'MOVIE_VIEWED',
-        'device_id' => $device->id
-    ]);
-
-    \App\Metadata::create([
-        'event_id' => $event->id,
-        'key' => 'title',
-        'value' => 'Bond 007'
-    ]);
-
     $events = \App\Events::all();
 
     return view('welcome', compact('events'));

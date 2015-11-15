@@ -22,29 +22,28 @@ Route::get('/', function () {
 Route::group(["prefix" => 'api', 'middleware' => 'cors'], function() {
     Route::post('devices', function() {
         $faker = Faker\Factory::create();
-        $device = \App\Devices::create([
+        $device = \App\Device::create([
             "name" => $faker->name
         ]);
 
-        // Also create an event for registration
+//         Also create an event for registration
         $event = [
             'name' => 'DEVICE_ADDED',
-            'device_id' => $device->id,
-            'metadata' => []
+            'device_id' => $device->id
         ];
-        \App\Events::create($event);
+        \App\Event::create($event);
 
         return response()->json($device, 201);
     });
 
     Route::get('devices', function() {
-        $devices = \App\Devices::all();
+        $devices = \App\Device::all();
         return response()->json($devices);
     });
 
     Route::post('events', function() {
         $data = \Illuminate\Support\Facades\Input::except('metadata');
-        $event = \App\Events::create($data);
+        $event = \App\Event::create($data);
         $data = \Illuminate\Support\Facades\Input::get('metadata');
         foreach($data as $key => $value) {
             \App\Metadata::create([

@@ -20,7 +20,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Devices::class, function (Faker\Generator $faker) {
+$factory->define(App\Device::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
     ];

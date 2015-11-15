@@ -23,7 +23,7 @@ class DeviceTest extends TestCase
     }
 
     public function testListDevices() {
-        $device = factory(App\Devices::class)->create();
+        $device = factory(\App\Device::class)->create();
         $this->get('/api/devices')
             ->seeJson([
                 'name' => $device->name,

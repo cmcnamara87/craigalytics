@@ -10,7 +10,7 @@ class Events extends Model
 
     public function device()
     {
-        return $this->hasOne(Devices::class, 'id');
+        return $this->belongsTo(Devices::class, 'device_id');
     }
 
     public function metadata()

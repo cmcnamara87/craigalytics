@@ -1,5 +1,9 @@
 <?php
 
+date_default_timezone_set('Australia/Brisbane');
+
+header('Access-Control-Allow-Origin: *');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

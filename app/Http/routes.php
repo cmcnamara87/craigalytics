@@ -55,7 +55,7 @@ Route::group(["prefix" => 'api', 'middleware' => 'cors'], function() {
     });
 
     Route::get('events', function() {
-        $events = \App\Event::orderBy('id', 'desc')->with('device')->get();
+        $events = \App\Event::orderBy('id', 'desc')->with('device', 'metadata')->paginate(20);
         return response()->json($events, 200);
     });
 

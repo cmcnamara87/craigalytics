@@ -53,4 +53,10 @@ Route::group(["prefix" => 'api', 'middleware' => 'cors'], function() {
         }
         return response()->json($event, 201);
     });
+
+    Route::get('events', function() {
+        $events = \App\Event::orderBy('id', 'desc')->get();
+        return response()->json($events, 200);
+    });
+
 });

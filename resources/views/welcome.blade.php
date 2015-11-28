@@ -13,6 +13,10 @@
                     <p>missing device</p>
                 @endif
                 <p>{{ $event->name }}</p>
+                <p>
+                    {{ $event->created_at->format('d/m/Y') }}
+                    {{ $event->created_at->diffForHumans() }}
+                </p>
                 <ul>
                 @foreach ($event->metadata as $data)
                     <li><strong>{{ $data->key  }}</strong> {{ $data->value }}</li>

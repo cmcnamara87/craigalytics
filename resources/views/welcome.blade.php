@@ -7,7 +7,11 @@
         <div class="container">
             <h1>Events</h1>
             @foreach ($events as $event)
+                @if (isset($event->device))
                 <p> {{ $event->device->name }}</p>
+                @else
+                    <p>missing device</p>
+                @endif
                 <p>{{ $event->name }}</p>
                 <ul>
                 @foreach ($event->metadata as $data)

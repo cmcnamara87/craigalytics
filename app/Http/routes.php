@@ -14,7 +14,7 @@ date_default_timezone_set('Australia/Brisbane');
 */
 
 Route::get('/', function () {
-    $events = \App\Event::all();
+    $events = \App\Event::orderBy('id', 'desc')->with('device', 'metadata')->get();
     return view('welcome', compact('events'));
 });
 

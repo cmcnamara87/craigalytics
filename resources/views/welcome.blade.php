@@ -14,7 +14,7 @@
                 @endif
                 <p>{{ $event->name }}</p>
                 <p>
-                    {{ $event->created_at->format('d/m/Y') }}
+                    {{ $event->created_at->format('d/m/Y H:i') }}
                     {{ $event->created_at->diffForHumans() }}
                 </p>
                 <ul>
